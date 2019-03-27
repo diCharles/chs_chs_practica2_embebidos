@@ -24,6 +24,7 @@ typedef struct
 }buttons_t;
 
 typedef  buttons_t * buttonsPtr;
+ typedef enum {NOT_PRESSED,PRESSED}button_state_t;
 /*returns buttons_g structure declare in c file*/
 buttonsPtr  get_buttons();
 
