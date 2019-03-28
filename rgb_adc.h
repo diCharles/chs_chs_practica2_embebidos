@@ -9,6 +9,7 @@
 #define RGB_ADC_H_
 
 #include "buttons.h"
+#include "global.h"
 /*when called the application rgb_adc will be executed*/
 void exe_rgb_adc();
 

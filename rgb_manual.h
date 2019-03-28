@@ -9,6 +9,7 @@
 #define RGB_MANUAL_H_
 
 #include "buttons.h"
+#include "global.h"
 /*when called the application rgb_manual will be executed*/
 void exe_rgb_manual();
 

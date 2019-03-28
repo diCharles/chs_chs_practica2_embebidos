@@ -11,5 +11,9 @@
 /*when called the application rgb_frecuencia will be executed*/
 void exe_rgb_frecuencia()
 {
+	uint8_t string1[]="FRECUENCIA"; /*! String to be printed in the LCD*/
 
+	LCD_nokia_clear();
+	LCD_nokia_goto_xy(0,0); /*! It establishes the position to print the messages in the LCD*/
+	LCD_nokia_send_string(&string1[0]); /*! It print a string stored in an array*/
 }

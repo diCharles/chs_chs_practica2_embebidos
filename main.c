@@ -19,15 +19,9 @@
  * Pins used:
  * Peripherals used:
  * */
-#include <stdio.h>
-#include "board.h"
-#include "peripherals.h"
-#include "pin_mux.h"
-#include "clock_config.h"
-#include "MK64F12.h"
-#include "fsl_debug_console.h"
 
-#include "buttons.h"
+#include "MK64F12.h"
+
 #include "systemControl.h"
 /* TODO: insert other include files here. */
 
@@ -39,14 +33,7 @@
 int main(void) {
 
   	/* Init board hardware. */
-    BOARD_InitBootPins();
-    BOARD_InitBootClocks();
-    BOARD_InitBootPeripherals();
-  	/* Init FSL debug console. */
-    BOARD_InitDebugConsole();
 
-    PRINTF("Hello World\n");
-    /* SYSTEM INITIALIZATION*/
     init_system();
     while(1)
     {

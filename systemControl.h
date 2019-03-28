@@ -25,6 +25,12 @@
 #define TOTAL_OF_APLICATIONS 6U
 
 #include "buttons.h"
+#include "rgb_adc.h"
+#include "rgb_frecuencia.h"
+#include "rgb_manual.h"
+#include "rgb_secuencia.h"
+#include "global.h"
+
 typedef void (*fptr)();
 
 /* initialize system */
@@ -39,5 +45,9 @@ fptr change_system_application();
 
 /* shows wallpaper and helps to select an application and returns application to be executed*/
 void system_menu();
+
+/* prints number options for applications*/
+void print_menu();
+
 
 #endif /* SYSTEMCONTROL_H_ */
