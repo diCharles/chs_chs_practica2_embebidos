@@ -14,6 +14,7 @@
 
 
 #include "stdint.h"
+#define NULL_PTR 0
 
 
 /** Constant that represent the clock enable for GPIO A */
@@ -103,6 +104,14 @@ typedef enum{GPIO_A, /*!< Definition to select GPIO A */
 
 typedef const uint32_t gpio_pin_control_register_t;
 
+/* functions to set callback functionality*/
+void PORTA_IRQ_Callback(void (*fptr)(void));
+void PORTB_IRQ_Callback(void (*fptr)(void));
+void PORTC_IRQ_Callback(void (*fptr)(void));
+void PORTD_IRQ_Callback(void (*fptr)(void));
+void PORTE_IRQ_Callback(void (*fptr)(void));
+/* if no function is passed in callback, this dummy function is executed by default*/
+void dummy_function(void);
 
 
 void GPIO_clear_irq_status(gpio_port_name_t gpio);

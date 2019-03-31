@@ -17,6 +17,7 @@
 #include "SPI.h"
 #include "Delay.h"
 
+
 extern const uint8_t wallpaper[];
 
 /* init lcd with for all layers, meant to be called by rgb_adc, rgb_frecuecia

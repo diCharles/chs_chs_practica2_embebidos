@@ -16,12 +16,32 @@
 
 static gpio_interrupt_flags_t g_intr_status_flag = {0};
 
-void PORTC_IRQHandler(void)
+/* fptrs are init with a void fuction that does nothing (dummy_function)*/
+void (*g_callback_PortA_fptr)(void)=0;
+void (*g_callback_PortB_fptr)(void)=0;
+void (*g_callback_PortC_fptr)(void)=0;
+void (*g_callback_PortD_fptr)(void)=0;
+void (*g_callback_PortE_fptr)(void)=0;
+
+void PORTA_IRQ_Callback(void (*fptr)(void))
 {
-	g_intr_status_flag.flag_port_c = TRUE;
-
-	GPIO_clear_interrupt(GPIO_C);
-
+	g_callback_PortA_fptr=fptr;
+}
+void PORTB_IRQ_Callback(void (*fptr)(void))
+{
+	g_callback_PortB_fptr=fptr;
+}
+void PORTC_IRQ_Callback(void (*fptr)(void))
+{
+	g_callback_PortC_fptr=fptr;
+}
+void PORTD_IRQ_Callback(void (*fptr)(void))
+{
+	g_callback_PortD_fptr=fptr;
+}
+void PORTE_IRQ_Callback(void (*fptr)(void))
+{
+	g_callback_PortE_fptr=fptr;
 }
 
 
@@ -29,9 +49,49 @@ void PORTA_IRQHandler(void)
 {
 
 	g_intr_status_flag.flag_port_a = TRUE;
-
+	if(NULL_PTR != g_callback_PortA_fptr)
+	{
+		g_callback_PortA_fptr();
+	}
 	GPIO_clear_interrupt(GPIO_A);
 }
+void PORTB_IRQHandler(void)
+{
+
+	g_intr_status_flag.flag_port_b = TRUE;
+	if(NULL_PTR != g_callback_PortB_fptr)
+	{
+		g_callback_PortB_fptr();
+	}
+	GPIO_clear_interrupt(GPIO_B);
+}
+
+void PORTC_IRQHandler(void)
+{
+	g_intr_status_flag.flag_port_c = TRUE;
+	if(NULL_PTR != g_callback_PortC_fptr)
+	{
+		g_callback_PortC_fptr();
+	}
+	g_callback_PortC_fptr();
+	GPIO_clear_interrupt(GPIO_C);
+}
+void PORTD_IRQHandler(void)
+{
+	g_intr_status_flag.flag_port_d = TRUE;
+	if(NULL_PTR !=g_callback_PortD_fptr)
+	{
+		g_callback_PortD_fptr();
+	}
+	GPIO_clear_interrupt(GPIO_D);
+}
+void PORTE_IRQHandler(void)
+{
+	g_intr_status_flag.flag_port_e = TRUE;
+	g_callback_PortE_fptr();
+	GPIO_clear_interrupt(GPIO_E);
+}
+
 
 
 void GPIO_clear_irq_status(gpio_port_name_t gpio)

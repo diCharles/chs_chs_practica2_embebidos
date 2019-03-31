@@ -43,7 +43,7 @@ fptr change_system_application()
 		g_current_app=g_selected_app;
 		botones_g->sw3=NOT_PRESSED;/*clearing sw flag*/
 	}
-	else if(PRESSED == botones_g->sw2)
+	if(PRESSED == botones_g->sw2)
 	{
 		// GO BACK TO SYSTEM MENU
 		g_current_app= system_menu;
@@ -83,21 +83,38 @@ void system_menu()
 		g_selected_app = exe_rgb_frecuencia ;	//user wants to execute this app
 		botones_g->b4=NOT_PRESSED;/*clearing button flag*/
 	}
+	else if(PRESSED == botones_g->b5)
+	{
+		g_selected_app=print_wallpaper;
+		botones_g->b5=NOT_PRESSED;
+	}
+	else if(PRESSED == botones_g->b6)
+	{
+		g_selected_app=print_wallpaper;
+		botones_g->b6=NOT_PRESSED;
+	}
 }
 
 void print_menu()
 {
-	 uint8_t string1[]="1 MANUAL"; /*! String to be printed in the LCD*/
-	 uint8_t string2[]="2 ADC"; /*! String to be printed in the LCD*/
-	 uint8_t string3[]="3 SECUENCIA"; /*! String to be printed in the LCD*/
-	 uint8_t string4[]="4 FRECUENCIA"; /*! String to be printed in the LCD*/
+	uint8_t string0[]="0 WALLPPR";
+	uint8_t string1[]="1 MANUAL"; /*! String to be printed in the LCD*/
+	uint8_t string2[]="2 ADC"; /*! String to be printed in the LCD*/
+	uint8_t string3[]="3 SECUENCIA"; /*! String to be printed in the LCD*/
+	uint8_t string4[]="4 FRECUENCIA"; /*! String to be printed in the LCD*/
+	uint8_t string5[]="5 PASSWORD"; /*! String to be printed in the LCD*/
 	LCD_nokia_clear();
 	LCD_nokia_goto_xy(0,0); /*! It establishes the position to print the messages in the LCD*/
-	LCD_nokia_send_string(&string1[0]); /*! It print a string stored in an array*/
+	LCD_nokia_send_string(&string0[0]); /*! It print a string stored in an array*/
 	LCD_nokia_goto_xy(0,1); /*! It establishes the position to print the messages in the LCD*/
-	LCD_nokia_send_string(&string2[0]); /*! It print a string stored in an array*/
+	LCD_nokia_send_string(&string1[0]); /*! It print a string stored in an array*/
 	LCD_nokia_goto_xy(0,2); /*! It establishes the position to print the messages in the LCD*/
-	LCD_nokia_send_string(&string3[0]); /*! It print a string stored in an array*/
+	LCD_nokia_send_string(&string2[0]); /*! It print a string stored in an array*/
 	LCD_nokia_goto_xy(0,3); /*! It establishes the position to print the messages in the LCD*/
+	LCD_nokia_send_string(&string3[0]); /*! It print a string stored in an array*/
+	LCD_nokia_goto_xy(0,4); /*! It establishes the position to print the messages in the LCD*/
 	LCD_nokia_send_string(&string4[0]); /*! It print a string stored in an array*/
+	LCD_nokia_goto_xy(0,5); /*! It establishes the position to print the messages in the LCD*/
+	LCD_nokia_send_string(&string5[0]); /*! It print a string stored in an array*/
+
 }

@@ -23,16 +23,10 @@
 #include "MK64F12.h"
 
 #include "systemControl.h"
-/* TODO: insert other include files here. */
 
-/* TODO: insert other definitions and declarations here. */
-
-/*
- * @brief   Application entry point.
- */
 int main(void) {
 
-  	/* Init board hardware. */
+
 
     init_system();
     while(1)
