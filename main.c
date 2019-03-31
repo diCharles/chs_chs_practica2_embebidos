@@ -7,6 +7,7 @@
 /* Brief
  *  Here the layer sytemControl is called
  * */
+/**/
 /*
  * About layers:
  * current layer: main
@@ -15,7 +16,8 @@
  * HAl:
  * */
 /*About firmware and hardware on this layer:
- * IRQs used:
+ * Interrupt base priority level 10
+ * IRQs used: PORTA, PORTB, PORTC
  * Pins used:
  * Peripherals used:
  * */
@@ -23,6 +25,7 @@
 #include "MK64F12.h"
 
 #include "systemControl.h"
+#include "global.h"
 
 int main(void) {
 

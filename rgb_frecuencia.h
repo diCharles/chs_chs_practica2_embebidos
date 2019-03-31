@@ -8,9 +8,9 @@
 #ifndef RGB_FRECUENCIA_H_
 #define RGB_FRECUENCIA_H_
 
-#include "buttons.h"
+
 #include "global.h"
 /*when called the application rgb_frecuencia will be executed*/
-void exe_rgb_frecuencia();
+void exe_rgb_frecuencia(void);
 
 #endif /* RGB_FRECUENCIA_H_ */

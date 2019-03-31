@@ -40,12 +40,14 @@ fptr change_system_application()
 	if(PRESSED == botones_g->sw3)
 	{
 		//EXECUTE CURRENT APLICATION
+		LCD_nokia_clear();/*clear last screen*/
 		g_current_app=g_selected_app;
 		botones_g->sw3=NOT_PRESSED;/*clearing sw flag*/
 	}
 	if(PRESSED == botones_g->sw2)
 	{
 		// GO BACK TO SYSTEM MENU
+		LCD_nokia_clear();/*clear last screen*/
 		g_current_app= system_menu;
 		botones_g->sw2=NOT_PRESSED;/* clearing sw flag*/
 	}
@@ -103,7 +105,7 @@ void print_menu()
 	uint8_t string3[]="3 SECUENCIA"; /*! String to be printed in the LCD*/
 	uint8_t string4[]="4 FRECUENCIA"; /*! String to be printed in the LCD*/
 	uint8_t string5[]="5 PASSWORD"; /*! String to be printed in the LCD*/
-	LCD_nokia_clear();
+
 	LCD_nokia_goto_xy(0,0); /*! It establishes the position to print the messages in the LCD*/
 	LCD_nokia_send_string(&string0[0]); /*! It print a string stored in an array*/
 	LCD_nokia_goto_xy(0,1); /*! It establishes the position to print the messages in the LCD*/

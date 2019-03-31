@@ -31,6 +31,6 @@ void init_LDC_for_all_layers()
 }
 void print_wallpaper()
 {
-	LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+
 	LCD_nokia_bitmap(&wallpaper[0]); /*! It prints an array that hold an image, in this case is the initial picture*/
 }
