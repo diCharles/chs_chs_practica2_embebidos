@@ -33,6 +33,7 @@ void exe_rgb_manual(void)
 		blue_anode_intensity+=20;
 
 		extern_rgb_color(red_anode_intensity,green_anode_intensity,blue_anode_intensity);
+		delay(10000);/* small of 100ms delay to avoid bounce*/
 		botones_g->b1=NOT_PRESSED;
 	}
 	if(PRESSED == botones_g->b2)
@@ -50,6 +51,7 @@ void exe_rgb_manual(void)
 			blue_anode_intensity-=20;
 		}
 		extern_rgb_color(red_anode_intensity,green_anode_intensity,blue_anode_intensity);
+		delay(10000);/* small of 100ms delay to avoid bounce*/
 		botones_g->b2=NOT_PRESSED;
 	}
 	if(PRESSED == botones_g->b3)
@@ -60,6 +62,7 @@ void exe_rgb_manual(void)
 
 		red_anode_intensity+=20;
 		extern_rgb_color(red_anode_intensity,green_anode_intensity,blue_anode_intensity);
+		delay(10000);/* small of 100ms delay to avoid bounce*/
 		botones_g->b3=NOT_PRESSED;
 	}
 	if(PRESSED == botones_g->b4)
@@ -78,6 +81,7 @@ void exe_rgb_manual(void)
 		}
 
 		extern_rgb_color(red_anode_intensity,green_anode_intensity,blue_anode_intensity);
+		delay(10000);/* small of 100ms delay to avoid bounce*/
 		botones_g->b4=NOT_PRESSED;
 	}
 	if(PRESSED == botones_g->b5)
@@ -88,6 +92,7 @@ void exe_rgb_manual(void)
 
 		green_anode_intensity+=20;
 		extern_rgb_color(red_anode_intensity,green_anode_intensity,blue_anode_intensity);
+		delay(10000);/* small of 100ms delay to avoid bounce*/
 		botones_g->b5=NOT_PRESSED;
 	}
 	if(PRESSED == botones_g->b6)
@@ -105,6 +110,7 @@ void exe_rgb_manual(void)
 		}
 
 		extern_rgb_color(red_anode_intensity,green_anode_intensity,blue_anode_intensity);
+		delay(10000);/* small of 100ms delay to avoid bounce*/
 		botones_g->b6=NOT_PRESSED;
 	}
 }

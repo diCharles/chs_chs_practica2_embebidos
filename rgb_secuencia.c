@@ -167,6 +167,7 @@ void run_programmed_sequence(void)
 		g_ftpr_programmed_colors[sweep_arr]=0;
 		extern_rgb_off();
 		selected_colors=0;
+		LCD_nokia_clear();/*clear last screen*/
 	}
 
 }
