@@ -248,3 +248,36 @@ void FTM0_ISR(void)
 
 
 }
+
+void ftm3_input_capture(void)
+{
+	//enable FTM0 clock
+
+				SIM->SCGC3|=(0x1<<25); //enable FTM3 and FTM0 module clock
+				SIM->SCGC5=SIM->SCGC5|0x3E00; //enable port A/B/C/D/E clock
+				FTM3->SC=0x00;
+				/* capture on rising edge onl bit ElSA in CnSCy*/
+				FTM3->CONTROLS[5].CnSC=0x04;/*old line from app note FTM0->C0SC|=0x04;*/
+				FTM3->COMBINE=0x00; //clear
+				//enable capture interrupt bit CHIE in CnsC pag 965
+				FTM3->CONTROLS[5].CnSC=0x40;//  old line for app note----->>FTM0->SC[0]|=0x40; //enable CH0 interrupt
+				FTM3->SC|=0x08;
+				//in ISR of capture interrupt, read the FTM_c0V register to get the capture value
+
+}
+void FTM3_ISR(void)
+{
+	volatile static float frecuency = 0;
+	volatile static uint32_t period = 0;
+	volatile static uint32_t last_period =0;
+	volatile static uint32_t dif =0; period -  last_period;
+	last_period = period ;
+	period = FTM3->CONTROLS[5].CnV ;
+	dif = period -  last_period;
+	if(period > last_period)
+	{
+		frecuency = (float)21000000/(float)dif;
+	}
+	FTM3->STATUS=0;
+
+}

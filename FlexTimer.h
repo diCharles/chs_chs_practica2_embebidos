@@ -87,4 +87,7 @@ void FlexTimer_frecuency(flexTimer_channels_t channel, uint32_t freq);
 /* sets PWM duty cycle for the desired channel*/
 void FlexTimer_PWM_duty_cycle(flexTimer_channels_t channel,uint8_t dutyCycle);
 
+/*ftm3   set input capture*/
+void ftm3_input_capture(void);
+
 #endif /* FLEXTIMER_H_ */

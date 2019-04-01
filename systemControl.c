@@ -8,7 +8,6 @@
 
 #include "systemControl.h"
 
-
 /* pointer to struct that contains buttons state*/
 
 

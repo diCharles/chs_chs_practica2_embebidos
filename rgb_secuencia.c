@@ -143,7 +143,7 @@ void build_programable_sequence( void (*fptr_selected_color)(void ))
 	else
 	{
 		/* assign selected color to program*/
-		g_ftpr_programmed_colors[selected_colors]=fptr_selected_color;
+		g_ftpr_programmed_colors[selected_colors] = fptr_selected_color;
 		/* increment selected colors, to storage incoming color*/
 		selected_colors++;
 	}
@@ -151,7 +151,7 @@ void build_programable_sequence( void (*fptr_selected_color)(void ))
 }
 void run_programmed_sequence(void)
 {
-	uint8_t sweep_arr=0;
+	uint8_t sweep_arr = 0;
 	/* displaying programmed colors on extern RGB*/
 	while(0 != g_ftpr_programmed_colors[sweep_arr])
 	{
@@ -162,7 +162,7 @@ void run_programmed_sequence(void)
 	}
 
 	/* clearing array*/
-	for(sweep_arr=0; sweep_arr < PROGRAMABLE_COLORS ; sweep_arr++)
+	for(sweep_arr = 0; sweep_arr < PROGRAMABLE_COLORS ; sweep_arr++)
 	{
 		g_ftpr_programmed_colors[sweep_arr]=0;
 		extern_rgb_off();
