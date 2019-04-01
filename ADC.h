@@ -13,6 +13,6 @@
 void ADC_init();
 void ADC0_single_ended_init(uint8_t clock_divide_select, uint8_t resolution , uint8_t ADC_clock_source, uint8_t number_of_samples);
 void ADC1_single_ended_init(uint8_t clock_divide_select, uint8_t resolution , uint8_t ADC_clock_source, uint8_t number_of_samples);
-uint16_t ADC_result(void);
+uint8_t ADC_result(void);
 
 #endif /* ADC_H_ */
