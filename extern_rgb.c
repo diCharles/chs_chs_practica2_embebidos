@@ -35,3 +35,33 @@ void extern_rgb_color(color_intesity_t red_intensity, color_intesity_t green_int
 		FlexTimer_update_channel_value(CHANNEL_2,green_intensity);
 
 }
+// Z
+void extern_rgb_blue(void)
+{
+	extern_rgb_color(0, 204, 153 );
+}
+
+void extern_rgb_red(void)
+{
+	extern_rgb_color(255, 0, 0);
+}
+
+void extern_rgb_green(void)
+{
+	extern_rgb_color(0, 255, 0);
+}
+
+void extern_rgb_yellow(void)
+{
+	extern_rgb_color(255, 255, 0);
+}
+
+void extern_rgb_purple(void)
+{
+	extern_rgb_color(255, 0, 255);
+}
+
+void extern_rgb_white(void)
+{
+	extern_rgb_color(255,255,255);
+}

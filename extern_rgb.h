@@ -29,4 +29,12 @@ void init_extern_rgb(void);
 /* sets selected color and its intensity, MAXIMUM INTENSITY=255, MINIMUM INTENSITY=0*/
 void extern_rgb_color(color_intesity_t red_intensity, color_intesity_t green_intensity, color_intesity_t blue_intensity);
 
+/*this  enables to set extern rgb to only one color*/
+void extern_rgb_blue(void);
+void extern_rgb_red(void);
+void extern_rgb_green(void);
+void extern_rgb_yellow(void);
+void extern_rgb_purple(void);
+void extern_rgb_white(void);
+
 #endif /* EXTERN_RGB_H_ */

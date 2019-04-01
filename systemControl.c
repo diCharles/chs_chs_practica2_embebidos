@@ -10,13 +10,13 @@
 
 
 /* pointer to struct that contains buttons state*/
-buttons_t * botones_g;
+
 
 //the defaul app to be executed is system_menu
 static fptr g_current_app  = system_menu;
 static fptr g_selected_app = system_menu;
 
-
+buttons_t * botones_g;
 void init_system()
 {
 	/*acquiring  pointer to  struct that contains buttons state */
@@ -29,11 +29,11 @@ void init_system()
 	print_wallpaper();
 	/* external led initialization rutine*/
 	extern_rgb_color(RED_ANODE_OFF,GREEN_ANODE_OFF,BLUE_ANODE_ON);/*only blue on*/
-	delay(100000);
+	delay(100000);/* one second delay*/
 	extern_rgb_color(RED_ANODE_ON,GREEN_ANODE_OFF,BLUE_ANODE_OFF);/* only red on*/
-	delay(100000);
+	delay(100000);/* one second delay*/
 	extern_rgb_color(RED_ANODE_OFF,GREEN_ANODE_ON,BLUE_ANODE_OFF);/* only grenn on*/
-	delay(100000);
+	delay(100000);/* one second delay*/
 	extern_rgb_color(RED_ANODE_OFF,GREEN_ANODE_OFF,BLUE_ANODE_OFF);/*all color off*/
 
 	/* now is necesary to wait button b0 to start the program */

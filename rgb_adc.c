@@ -9,6 +9,10 @@
 #include "rgb_adc.h"
 
 
+
+
+
+
 /*when called the application rgb_adc will be executed*/
 void exe_rgb_adc(void)
 {
@@ -54,6 +58,7 @@ void print_ADC_read(uint8_t convertion_adc)
 	LCD_nokia_send_char(decimal1+48); /*! It prints a character*/
 	LCD_nokia_send_char(decimal2+48); /*! It prints a character*/
 }
+
 void ADC_convertion_to_rgb(uint8_t convertion_adc)
 {
 
@@ -159,3 +164,11 @@ uint8_t ten_convertions_adc_average()
 	average = (uint32_t)((float)average/(float)10);
 	return ((uint8_t)average);
 }
+
+
+
+//
+
+
+
+

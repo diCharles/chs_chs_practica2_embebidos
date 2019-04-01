@@ -37,6 +37,9 @@
 #define PH13 234
 #define PH14 255
 
+//For function rgb_sequence_handler
+#define SIZE_OF_SEQUENCE_ARRAY 10
+
 /*when called the application rgb_adc will be executed*/
 void exe_rgb_adc(void);
 
