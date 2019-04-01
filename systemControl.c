@@ -23,6 +23,9 @@ void init_system()
 	botones_g= get_buttons();
 	/* init nokia lcd*/
 	init_LDC_for_all_layers(0);
+	/* initializig external RGB led*/
+	init_extern_rgb();
+
 	system_menu();
 
 }

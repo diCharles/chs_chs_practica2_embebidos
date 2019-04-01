@@ -7,10 +7,25 @@
  */
 #include "FlexTimer.h"
 
-void FlexTimer_update_channel_value(int16_t channel_value)
+void FlexTimer_update_channel_value(flexTimer_channels_t channel,int16_t channel_value)
 {
 	/**Assigns a new value for the duty cycle*/
-	FTM0->CONTROLS[0].CnV = channel_value;
+	if(CHANNEL_0 == channel)
+	{
+		FTM0->CONTROLS[0].CnV = channel_value;
+	}
+	else if(CHANNEL_1 == channel)
+	{
+		FTM0->CONTROLS[1].CnV = channel_value;
+	}
+	else if(CHANNEL_2 == channel)
+	{
+		FTM0->CONTROLS[2].CnV = channel_value;
+	}
+	else if(CHANNEL_3 == channel)
+	{
+		FTM0->CONTROLS[3].CnV = channel_value;
+	}
 }
 
 
@@ -24,11 +39,18 @@ void FlexTimer_Init(flexTimer_channels_t channel)
 	FTM0->CONF |= FTM_CONF_BDMMODE(3);
 
 	/*select flexTimer channel mode and configuration*/
-	Fleximer_mode(CHANNEL_0,PWM ,CLEAR_OUTPUT_ON_MATCH);
-	FlexTimer_mod(CHANNEL_0, 20);
-	/*select flexTimer frequency with the new three function calls*/
-	FlexTimer_update_channel_value(16);
-	FlexTimer_clockSource_and_prescaler(CHANNEL_0,FLEX_TIMER_CLKS_1,FLEX_TIMER_PS_1);
+	Fleximer_mode(CHANNEL_0,PWM ,SIMPLE_PWM);
+	Fleximer_mode(CHANNEL_1,PWM ,SIMPLE_PWM);
+	Fleximer_mode(CHANNEL_2,PWM ,SIMPLE_PWM);
+	FlexTimer_mod(CHANNEL_0, 255);
+
+	/* by default the flextimer channel is runnig with output equal to zero*/
+	FlexTimer_update_channel_value(CHANNEL_0, 0);
+	FlexTimer_update_channel_value(CHANNEL_1, 0);
+	FlexTimer_update_channel_value(CHANNEL_2, 0);
+	/*setting finally clock source*/
+	FlexTimer_clockSource_and_prescaler(CHANNEL_0,FLEX_TIMER_CLKS_1,FLEX_TIMER_PS_128);
+
 
 }
 void Fleximer_mode(flexTimer_channels_t channel, flexTimer_modes_t mode, flexTimer_mode_configurations_t config)
@@ -68,12 +90,31 @@ void Fleximer_mode(flexTimer_channels_t channel, flexTimer_modes_t mode, flexTim
 		{
 			/**When write protection is enabled (WPDIS = 0), write protected bits cannot be written.
 			 * When write protection is disabled (WPDIS = 1), write protected bits can be written.*/
-			FTM0->MODE |= FTM_MODE_WPDIS_MASK;
-			/**Enables the writing over all registers*/
-			FTM0->MODE &= ~ FTM_MODE_FTMEN_MASK;
-			/**Selects the Edge-Aligned PWM mode mode*/
-			FTM0->CONTROLS[0].CnSC = FTM_CnSC_MSB(1) | FTM_CnSC_ELSB(1);
-			/**Assign a duty cycle of 50%*/
+			if( CHANNEL_0== channel)
+			{
+				FTM0->MODE |= FTM_MODE_WPDIS_MASK;/**Enables the writing over all registers*/
+				FTM0->MODE &= ~ FTM_MODE_FTMEN_MASK;
+				FTM0->CONTROLS[0].CnSC = FTM_CnSC_MSB(1) | FTM_CnSC_ELSB(1);/**Selects the Edge-Aligned PWM mode mode*/
+			}
+			else if(CHANNEL_1== channel)
+			{
+				FTM0->MODE |= FTM_MODE_WPDIS_MASK;/**Enables the writing over all registers*/
+				FTM0->MODE &= ~ FTM_MODE_FTMEN_MASK;
+				FTM0->CONTROLS[1].CnSC = FTM_CnSC_MSB(1) | FTM_CnSC_ELSB(1);/**Selects the Edge-Aligned PWM mode mode*/
+			}
+			else if(CHANNEL_2== channel)
+			{
+				FTM0->MODE |= FTM_MODE_WPDIS_MASK;/**Enables the writing over all registers*/
+				FTM0->MODE &= ~ FTM_MODE_FTMEN_MASK;
+				FTM0->CONTROLS[2].CnSC = FTM_CnSC_MSB(1) | FTM_CnSC_ELSB(1);/**Selects the Edge-Aligned PWM mode mode*/
+			}
+			else if(CHANNEL_3== channel)
+			{
+				FTM0->MODE |= FTM_MODE_WPDIS_MASK;/**Enables the writing over all registers*/
+				FTM0->MODE &= ~ FTM_MODE_FTMEN_MASK;
+				FTM0->CONTROLS[3].CnSC = FTM_CnSC_MSB(1) | FTM_CnSC_ELSB(1);/**Selects the Edge-Aligned PWM mode mode*/
+			}
+
 		}
 		else if( CENTER_ALIGNED_PWM == config)
 		{
@@ -103,6 +144,7 @@ void Fleximer_mode(flexTimer_channels_t channel, flexTimer_modes_t mode, flexTim
 		{
 
 		}
+		break;
 	case INPUT_CAPTURE:
 		if( SINGLE_EDGE_CAPTURE == config)
 		{
@@ -154,6 +196,9 @@ void FlexTimer_clockSource_and_prescaler(flexTimer_channels_t channel, uint8_t c
 		break;
 	case CHANNEL_2:
 		FTM2->SC |= FTM_SC_CLKS(FLEX_TIMER_CLKS_1)| FTM_SC_PS(FLEX_TIMER_PS_128);
+		break;
+	case CHANNEL_3:
+		FTM3->SC |= FTM_SC_CLKS(FLEX_TIMER_CLKS_1)| FTM_SC_PS(FLEX_TIMER_PS_128);
 		break;
 	default:
 		break;

@@ -65,7 +65,7 @@ typedef enum{CHANNEL_0,
 			}flexTimer_channels_t;
 
 /* write directly Counter Value (CnV) register*/
-void FlexTimer_update_channel_value(int16_t channel_value);
+void FlexTimer_update_channel_value(flexTimer_channels_t channel, int16_t channel_value);
 
 /*brief for flex timer initialization in a specific mode from flexTimer_mode_t*/
 /*channel argument still not implemented*/
