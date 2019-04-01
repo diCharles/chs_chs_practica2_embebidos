@@ -165,6 +165,8 @@ void run_programmed_sequence(void)
 	for(sweep_arr=0; sweep_arr < PROGRAMABLE_COLORS ; sweep_arr++)
 	{
 		g_ftpr_programmed_colors[sweep_arr]=0;
+		extern_rgb_off();
+		selected_colors=0;
 	}
 
 }

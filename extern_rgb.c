@@ -38,7 +38,7 @@ void extern_rgb_color(color_intesity_t red_intensity, color_intesity_t green_int
 // Z
 void extern_rgb_blue(void)
 {
-	extern_rgb_color(0, 204, 153 );
+	extern_rgb_color(0, 0, 153 );
 }
 
 void extern_rgb_red(void)
@@ -64,4 +64,8 @@ void extern_rgb_purple(void)
 void extern_rgb_white(void)
 {
 	extern_rgb_color(255,255,255);
+}
+void extern_rgb_off(void)
+{
+	extern_rgb_color(RED_ANODE_OFF,GREEN_ANODE_OFF, BLUE_ANODE_OFF);
 }

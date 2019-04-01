@@ -36,5 +36,6 @@ void extern_rgb_green(void);
 void extern_rgb_yellow(void);
 void extern_rgb_purple(void);
 void extern_rgb_white(void);
+void extern_rgb_off(void);
 
 #endif /* EXTERN_RGB_H_ */
