@@ -25,7 +25,22 @@ void init_system()
 	init_LDC_for_all_layers(0);
 	/* initializig external RGB led*/
 	init_extern_rgb();
+	/*print wallpaper as initial state*/
+	print_wallpaper();
+	/* external led initialization rutine*/
+	extern_rgb_color(RED_ANODE_OFF,GREEN_ANODE_OFF,BLUE_ANODE_ON);/*only blue on*/
+	delay(100000);
+	extern_rgb_color(RED_ANODE_ON,GREEN_ANODE_OFF,BLUE_ANODE_OFF);/* only red on*/
+	delay(100000);
+	extern_rgb_color(RED_ANODE_OFF,GREEN_ANODE_ON,BLUE_ANODE_OFF);/* only grenn on*/
+	delay(100000);
+	extern_rgb_color(RED_ANODE_OFF,GREEN_ANODE_OFF,BLUE_ANODE_OFF);/*all color off*/
 
+	/* now is necesary to wait button b0 to start the program */
+	while (NOT_PRESSED == botones_g->b0);
+	botones_g->b0=NOT_PRESSED;/*clearing button flag*/
+
+	LCD_nokia_clear();/*clear last screen*/
 	system_menu();
 
 }
@@ -65,6 +80,7 @@ void system_menu()
 	if(PRESSED == botones_g->b0)
 	{
 		g_selected_app=print_wallpaper;
+		botones_g->b0=NOT_PRESSED;/*clearing button flag*/
 	}
 	/*selection of application to execute*/
 	else if(PRESSED == botones_g->b1)

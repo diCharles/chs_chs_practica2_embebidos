@@ -48,13 +48,7 @@ buttonsPtr get_buttons(void)
 }
 static void init_buttons(void)
 {
-	/* ENABLING INTERRUPTS FOR BUTTONS*/
-	/* base priority off 10*/
-	NVIC_set_basepri_threshold(10);
-	NVIC_enable_interrupt_and_priotity(PORTA_IRQ,9);
-	NVIC_enable_interrupt_and_priotity(PORTB_IRQ,8);
-	NVIC_enable_interrupt_and_priotity(PORTC_IRQ,7);
-	NVIC_global_enable_interrupts;
+
 	/* pins on portb , portA and portC are going to be used*/
 	GPIO_clock_gating(GPIO_C);
 	GPIO_clock_gating(GPIO_B);
@@ -77,21 +71,30 @@ static void init_buttons(void)
 	GPIO_pin_control_register(GPIO_B, bit_11, &input_intr_config);
 	GPIO_data_direction_pin(GPIO_B, GPIO_PIN_INPUT, bit_11);
 	/*initialize PTC11 as input with pull up resistor ,will be analogous to B4*/
-	GPIO_pin_control_register(GPIO_C, bit_11, &input_intr_config);
 	GPIO_data_direction_pin(GPIO_C, GPIO_PIN_INPUT, bit_11);
+	GPIO_pin_control_register(GPIO_C, bit_11, &input_intr_config);
+
 	/*initialize PTC10as input with pull up resistor ,will be analogous to B5*/
-	GPIO_pin_control_register(GPIO_C, bit_10, &input_intr_config);
 	GPIO_data_direction_pin(GPIO_C, GPIO_PIN_INPUT, bit_10);
+	GPIO_pin_control_register(GPIO_C, bit_10, &input_intr_config);
+
 	/*initialize PTC10as input with pull up resistor ,will be analogous to B6*/
 	GPIO_pin_control_register(GPIO_A, bit_2, &input_intr_config);
 	GPIO_data_direction_pin(GPIO_A, GPIO_PIN_INPUT, bit_2);
 	/*initialize PTC6as input with pull up resistor will be analogous to sw2*/
-	GPIO_pin_control_register(GPIO_C, bit_6, &input_intr_config);
 	GPIO_data_direction_pin(GPIO_C, GPIO_PIN_INPUT, bit_6);
+	GPIO_pin_control_register(GPIO_C, bit_6, &input_intr_config);
+
 	/*initialize PTA4 as input with pull up resistor will be analogous to sw3*/
 	GPIO_pin_control_register(GPIO_A, bit_4, &input_intr_config);
 	GPIO_data_direction_pin(GPIO_A, GPIO_PIN_INPUT, bit_4);
-
+	/* ENABLING INTERRUPTS FOR BUTTONS*/
+	/* base priority off 10*/
+	NVIC_set_basepri_threshold(10);
+	NVIC_enable_interrupt_and_priotity(PORTA_IRQ,9);
+	NVIC_enable_interrupt_and_priotity(PORTB_IRQ,8);
+	NVIC_enable_interrupt_and_priotity(PORTC_IRQ,7);
+	NVIC_global_enable_interrupts;
 
 
 }

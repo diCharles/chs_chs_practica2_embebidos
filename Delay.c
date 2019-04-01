@@ -2,7 +2,7 @@
 
 #include  "Delay.h"
 
-void delay(uint16_t delay)
+void delay(uint32_t delay)
 {
 	volatile int counter, counter_2;
 

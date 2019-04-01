@@ -30,8 +30,8 @@ void extern_rgb_color(color_intesity_t red_intensity, color_intesity_t green_int
 
 		FlexTimer_update_channel_value(CHANNEL_0,red_intensity);
 
-		FlexTimer_update_channel_value(CHANNEL_1,green_intensity);
+		FlexTimer_update_channel_value(CHANNEL_1,blue_intensity);
 
-		FlexTimer_update_channel_value(CHANNEL_2,blue_intensity);
+		FlexTimer_update_channel_value(CHANNEL_2,green_intensity);
 
 }
