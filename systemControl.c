@@ -67,6 +67,7 @@ fptr change_system_application()
 		// GO BACK TO SYSTEM MENU
 		LCD_nokia_clear();/*clear last screen*/
 		g_current_app= system_menu;
+		extern_rgb_color( RED_ANODE_OFF, GREEN_ANODE_OFF, BLUE_ANODE_OFF);
 		botones_g->sw2=NOT_PRESSED;/* clearing sw flag*/
 	}
 	return (g_current_app);
