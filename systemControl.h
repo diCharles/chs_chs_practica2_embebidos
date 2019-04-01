@@ -33,13 +33,14 @@
 
 typedef void (*fptr)();
 
+
 /* initialize system */
 void init_system();
 
 /* when this fuction is called the current application is going to be executed*/
 void  execute_current_system_application();
 
-/* this fuction will decide to change the current system application,
+/* this fuction will decide to change the current system application in fuction of press of sw2 and sw3,
  * it will return system aplication to execute*/
 fptr change_system_application();
 

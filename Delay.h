@@ -7,6 +7,6 @@
 
 #define DELAY 65000
 
-void delay(uint16_t delay);
+void delay(uint32_t delay);
 
 #endif /* DELAY_H_ */
