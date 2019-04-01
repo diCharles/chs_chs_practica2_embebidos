@@ -26,6 +26,7 @@ void exe_rgb_adc(void)
 	LCD_nokia_goto_xy(0,0); /*! It establishes the position to print the messages in the LCD*/
 	LCD_nokia_send_string(&string1[0]); /*! It print a string stored in an array*/
 	uint8_t adc_convert= ten_convertions_adc_average();
+	//uint8_t adc_convert= ADC_result();
 	print_ADC_read( adc_convert);
 	ADC_convertion_to_rgb(adc_convert);
 }

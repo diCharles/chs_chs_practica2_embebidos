@@ -56,7 +56,7 @@ uint8_t ADC_result(void )
 	while( (ADC0->SC1[0] & ADC_SC1_COCO_MASK) == 0);
 	//Register R contains the result of the conversion
 
-	return (ADC0->R[0] & 0x000000FF);
+	return (ADC0->R[0] & 0x00000FFF);
 }
 
 void ADC1_single_ended_init( uint8_t clock_divide_select, uint8_t resolution , uint8_t ADC_clock_source, uint8_t number_of_samples)
